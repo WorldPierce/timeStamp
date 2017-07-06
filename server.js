@@ -47,6 +47,10 @@ app.get("/dateValues/:dateVal", function(req,res){
     var unixDate = dateVal;
     var naturalDate = new Date(dateVal * 1000);
     naturalDate = naturalDate.toLocaleDateString("en-us", dateFormat);
+    if(naturalDate.toString() == "Invalid Date"){
+      naturalDate = null;
+      unixDate = null;
+    }
   }
   res.json({unix: unixDate, natural: naturalDate});
 });
