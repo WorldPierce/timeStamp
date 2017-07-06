@@ -36,6 +36,12 @@ app.get("/dateValues/:dateVal", function(req,res){
     var naturalDate = new Date(dateVal);
     naturalDate = naturalDate.toLocaleDateString("en-us", dateFormat);
     var unixDate = new Date(dateVal).getTime()/1000;
+    console.log(unixDate.toString());
+    if(unixDate.toString() == "NaN"){
+      console.log("null");
+      naturalDate = null;
+      unixDate = null;
+    }
   }
   else{
     var unixDate = dateVal;
