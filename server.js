@@ -20,10 +20,18 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('dateValues', function(req,res,next))
+app.get("/dateValues/:dateVal", function(req,res){
+  // res.send('url found');
+  // res.sendStatus(200);
+  //console.log('correct url');
+  var dateVal = req.params.dateVal;
+  
+  res.json({unix: dateVal});
+});
 
 app.get("/dreams", function (request, response) {
   response.send(dreams);
+  //console.log('correct url');
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
